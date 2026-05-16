@@ -123,7 +123,7 @@ object App extends UserInteraction:
 
   private def doExit(current: TournamentState): IO[Unit] =
     print(s"Final: ${current.teams.size} teams, ${current.matches.size} matches. Goodbye!")
-  git add .
+
 
   private def statusTitle(st: TournamentState): String =
     s"Tournament Round ${st.currentRound} | Teams: ${st.teams.size} | Matches: ${st.matches.size}"
