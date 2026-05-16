@@ -2,114 +2,84 @@ package tournament
 
 import monads.Reader
 
-// Набор вычислений, зависящих от TournamentConfig.
-// Каждая функция возвращает Reader — описание зависимости, а не готовый результат.
-// Конфиг не передаётся явно внутри — он придёт снаружи при вызове .run(cfg).
 object ReaderOps:
 
-  // Сколько очков получает команда за конкретный исход.
-  // outcome — Win, Draw или Loss.
-  def pointsFor(outcome: Outcome): Reader[TournamentConfig, Int] =
-    Reader.asks { cfg =>
-      outcome match
-        case Outcome.Win  => cfg.pointsForWin
-        case Outcome.Draw => cfg.pointsForDraw
-        case Outcome.Loss => cfg.pointsForLoss
-    }
+  def interpreter: TournamentReader[[A] =>> Reader[TournamentConfig, A]] =
+    new TournamentReader[[A] =>> Reader[TournamentConfig, A]]:
 
-  // Строит отсортированную турнирную таблицу по списку команд и матчей.
-  // Сначала считаем очки, затем сортируем согласно правилу тай-брейка из конфига.
-  def ranking(
-               teams:   List[String],
-               matches: List[MatchResult]
-             ): Reader[TournamentConfig, List[TeamRecord]] =
-    Reader.asks { cfg =>
-      // Для каждой команды собираем статистику по всем её матчам.
-      val records = teams.map { team =>
-        val teamMatches = matches.filter(m => m.teamA == team || m.teamB == team)
-        var points        = 0
-        var goalsScored   = 0
-        var goalsConceded = 0
-        var wins          = 0
-        var draws         = 0
-        var losses        = 0
+      def pointsFor(outcome: Outcome): Reader[TournamentConfig, Int] =
+        Reader.asks { cfg =>
+          outcome match
+            case Outcome.Win  => cfg.pointsForWin
+            case Outcome.Draw => cfg.pointsForDraw
+            case Outcome.Loss => cfg.pointsForLoss
+        }
 
-        teamMatches.foreach { m =>
-          val (scored, conceded) =
-            if m.teamA == team then (m.goalsA, m.goalsB)
-            else (m.goalsB, m.goalsA)
+      def ranking(teams: List[String], matches: List[MatchResult]): Reader[TournamentConfig, List[TeamRecord]] =
+        Reader.asks { cfg =>
+          val records = teams.map { team =>
+            val teamMatches = matches.filter(m => m.teamA == team || m.teamB == team)
 
-          goalsScored   += scored
-          goalsConceded += conceded
+            val init = (0, 0, 0, 0, 0, 0)
+            val (points, scored, conceded, wins, draws, losses) =
+              teamMatches.foldLeft(init) { case ((pts, sc, conc, w, d, l), m) =>
+                val (s, c) =
+                  if m.teamA == team then (m.goalsA, m.goalsB)
+                  else (m.goalsB, m.goalsA)
 
-          if scored > conceded then
-            wins   += 1
-            points += cfg.pointsForWin
-          else if scored == conceded then
-            draws  += 1
-            points += cfg.pointsForDraw
+                val outcome =
+                  if s > c then Outcome.Win
+                  else if s == c then Outcome.Draw
+                  else Outcome.Loss
+
+                val earned = outcome match
+                  case Outcome.Win  => cfg.pointsForWin
+                  case Outcome.Draw => cfg.pointsForDraw
+                  case Outcome.Loss => cfg.pointsForLoss
+
+                val (w1, d1, l1) = outcome match
+                  case Outcome.Win  => (w + 1, d, l)
+                  case Outcome.Draw => (w, d + 1, l)
+                  case Outcome.Loss => (w, d, l + 1)
+
+                (pts + earned, sc + s, conc + c, w1, d1, l1)
+              }
+
+            TeamRecord(team, points, scored, conceded, wins, draws, losses)
+          }
+
+          records.sortWith { (a, b) =>
+            val cmp = tieBreak(a, b).run(cfg)
+            cmp < 0
+          }
+        }
+
+      def canSchedule(
+                       teamA: String, teamB: String, round: Int, matches: List[MatchResult]
+                     ): Reader[TournamentConfig, Boolean] =
+        Reader.asks { cfg =>
+          if teamA == teamB then false
+          else if !cfg.forbidRematch then true
           else
-            losses += 1
-            points += cfg.pointsForLoss
+            !matches.exists { m =>
+              m.round == round &&
+                ((m.teamA == teamA && m.teamB == teamB) || (m.teamA == teamB && m.teamB == teamA))
+            }
         }
 
-        TeamRecord(team, points, goalsScored, goalsConceded, wins, draws, losses)
-      }
-
-      // Сортировка по правилу тай-брейка.
-      cfg.tieBreak match
-        case TieBreakRule.GoalDifference =>
-          records.sortBy(r => -r.points).sortBy(r => -(r.goalsScored - r.goalsConceded))
-        case TieBreakRule.GoalsScored =>
-          records.sortBy(r => -r.points).sortBy(r => -r.goalsScored)
-        case TieBreakRule.HeadToHead =>
-          // Упрощённо: сортируем по очкам, head-to-head не реализуем полноценно.
-          records.sortBy(r => -r.points)
-        case TieBreakRule.GoalDiffThenScored =>
-          records.sortBy(r => (-r.points, -(r.goalsScored - r.goalsConceded), -r.goalsScored))
-    }
-
-  // Дополнительная проверка с учётом уже сыгранных матчей.
-  // Эту логику используем снаружи, передавая state.matches.
-  def canScheduleWithHistory(
-                              teamA:   String,
-                              teamB:   String,
-                              round:   Int,
-                              matches: List[MatchResult]
-                            ): Reader[TournamentConfig, Boolean] =
-    Reader.asks { cfg =>
-      if teamA == teamB then false
-      else if !cfg.forbidRematch then true
-      else
-        val alreadyPlayed = matches.exists { m =>
-          m.round == round &&
-            ((m.teamA == teamA && m.teamB == teamB) || (m.teamA == teamB && m.teamB == teamA))
+      def tieBreak(recordA: TeamRecord, recordB: TeamRecord): Reader[TournamentConfig, Int] =
+        Reader.asks { cfg =>
+          if recordA.points != recordB.points then recordB.points - recordA.points
+          else
+            cfg.tieBreak match
+              case TieBreakRule.GoalDifference =>
+                (recordB.goalsScored - recordB.goalsConceded) - (recordA.goalsScored - recordA.goalsConceded)
+              case TieBreakRule.GoalsScored =>
+                recordB.goalsScored - recordA.goalsScored
+              case TieBreakRule.HeadToHead => 0
+              case TieBreakRule.GoalDiffThenScored =>
+                val diffA = recordA.goalsScored - recordA.goalsConceded
+                val diffB = recordB.goalsScored - recordB.goalsConceded
+                if diffA != diffB then diffB - diffA
+                else recordB.goalsScored - recordA.goalsScored
         }
-        !alreadyPlayed
-    }
-
-  // Сравнивает две команды по тай-брейку.
-  // Возвращает отрицательное, если teamA выше, положительное, если teamB выше.
-  def tieBreak(
-                recordA: TeamRecord,
-                recordB: TeamRecord
-              ): Reader[TournamentConfig, Int] =
-    Reader.asks { cfg =>
-      if recordA.points != recordB.points then
-        recordB.points - recordA.points // больше очков — выше
-      else
-        cfg.tieBreak match
-          case TieBreakRule.GoalDifference =>
-            val diffA = recordA.goalsScored - recordA.goalsConceded
-            val diffB = recordB.goalsScored - recordB.goalsConceded
-            diffB - diffA
-          case TieBreakRule.GoalsScored =>
-            recordB.goalsScored - recordA.goalsScored
-          case TieBreakRule.HeadToHead =>
-            0 // упрощённо
-          case TieBreakRule.GoalDiffThenScored =>
-            val diffA = recordA.goalsScored - recordA.goalsConceded
-            val diffB = recordB.goalsScored - recordB.goalsConceded
-            if diffA != diffB then diffB - diffA
-            else recordB.goalsScored - recordA.goalsScored
-    }
