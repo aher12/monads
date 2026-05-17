@@ -2,7 +2,6 @@ package tournament
 
 object TournamentLogic:
 
-  // Определение исхода для команды
   def outcomeFor(team: String, m: MatchResult): Outcome =
     val (scored, conceded) =
       if m.teamA == team then (m.goalsA, m.goalsB)
@@ -11,12 +10,10 @@ object TournamentLogic:
     else if scored == conceded then Outcome.Draw
     else Outcome.Loss
 
-  // Счёт голов команды в матче
   def goalsFor(team: String, m: MatchResult): (Int, Int) =
     if m.teamA == team then (m.goalsA, m.goalsB)
     else (m.goalsB, m.goalsA)
 
-  // Единый расчёт турнирной таблицы
   def computeStandings(
                         teams:         List[String],
                         matches:       List[MatchResult],
@@ -52,24 +49,8 @@ object TournamentLogic:
       else updates.reduce((f1, f2) => f1.andThen(f2))(empty)
     }
 
-  // Позиция команды в таблице (с 1)
   def positionOf(team: String, table: List[TeamRecord]): Int =
     table.indexWhere(_.name == team) + 1
 
-  // Сортировка по тай-брейку
-  def sortWithTieBreak(records: List[TeamRecord], cfg: TournamentConfig): List[TeamRecord] =
-    records.sortWith { (a, b) =>
-      if a.points != b.points then b.points < a.points
-      else
-        cfg.tieBreak match
-          case TieBreakRule.GoalDifference =>
-            (b.goalsScored - b.goalsConceded) > (a.goalsScored - a.goalsConceded)
-          case TieBreakRule.GoalsScored =>
-            b.goalsScored > a.goalsScored
-          case TieBreakRule.HeadToHead => false
-          case TieBreakRule.GoalDiffThenScored =>
-            val diffA = a.goalsScored - a.goalsConceded
-            val diffB = b.goalsScored - b.goalsConceded
-            if diffA != diffB then diffB > diffA
-            else b.goalsScored > a.goalsScored
-    }
+  def sortWithTieBreak(records: List[TeamRecord], tieBreakFn: (TeamRecord, TeamRecord) => Int): List[TeamRecord] =
+    records.sortWith { (a, b) => tieBreakFn(a, b) < 0 }

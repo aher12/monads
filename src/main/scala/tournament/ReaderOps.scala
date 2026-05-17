@@ -18,7 +18,7 @@ object ReaderOps:
       def ranking(teams: List[String], matches: List[MatchResult]): Reader[TournamentConfig, List[TeamRecord]] =
         Reader.asks { cfg =>
           val standings = TournamentLogic.computeStandings(teams, matches, cfg.pointsForWin, cfg.pointsForDraw, cfg.pointsForLoss)
-          TournamentLogic.sortWithTieBreak(standings, cfg)
+          TournamentLogic.sortWithTieBreak(standings, (a, b) => tieBreak(a, b).run(cfg))
         }
 
       def canSchedule(
