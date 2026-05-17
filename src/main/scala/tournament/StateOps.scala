@@ -41,18 +41,41 @@ object StateOps:
           st.teams.map { team =>
             val teamMatches = st.matches.filter(m => m.teamA == team || m.teamB == team)
 
-            val init = (0, 0, 0, 0, 0, 0)
-            val (points, scored, conceded, wins, draws, losses) =
-              teamMatches.foldLeft(init) { case ((pts, sc, conc, w, d, l), m) =>
-                val (s, c) =
-                  if m.teamA == team then (m.goalsA, m.goalsB)
-                  else (m.goalsB, m.goalsA)
+            val empty = TeamRecord(team, 0, 0, 0, 0, 0, 0)
 
-                if s > c then (pts + 3, sc + s, conc + c, w + 1, d, l)
-                else if s == c then (pts + 1, sc + s, conc + c, w, d + 1, l)
-                else (pts, sc + s, conc + c, w, d, l + 1)
-              }
+            val updates: List[TeamRecord => TeamRecord] = teamMatches.map { m =>
+              val (s, c) =
+                if m.teamA == team then (m.goalsA, m.goalsB)
+                else (m.goalsB, m.goalsA)
 
-            TeamRecord(team, points, scored, conceded, wins, draws, losses)
+              val outcome =
+                if s > c then Outcome.Win
+                else if s == c then Outcome.Draw
+                else Outcome.Loss
+
+              val earned = outcome match
+                case Outcome.Win  => 3
+                case Outcome.Draw => 1
+                case Outcome.Loss => 0
+
+              (r: TeamRecord) =>
+                val (w1, d1, l1) = outcome match
+                  case Outcome.Win  => (r.wins + 1, r.draws, r.losses)
+                  case Outcome.Draw => (r.wins, r.draws + 1, r.losses)
+                  case Outcome.Loss => (r.wins, r.draws, r.losses + 1)
+
+                TeamRecord(
+                  name          = r.name,
+                  points        = r.points + earned,
+                  goalsScored   = r.goalsScored + s,
+                  goalsConceded = r.goalsConceded + c,
+                  wins          = w1,
+                  draws         = d1,
+                  losses        = l1
+                )
+            }
+
+            if updates.isEmpty then empty
+            else updates.reduce((f1, f2) => f1.andThen(f2))(empty)
           }.sortBy(r => -r.points)
         }
