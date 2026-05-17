@@ -11,9 +11,8 @@ trait UserInteraction:
   def userInteractionLoop: IO[Unit]
 
 final case class MenuLeaf(
-                           title:    String,
-                           action:   IO[Unit],
-                           continue: Boolean = true
+                           title:  String,
+                           action: IO[Unit]
                          ) extends MenuOption:
   def show: String = title
 

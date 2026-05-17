@@ -1,1 +1,167 @@
-[0m[[0m[0mdebug[0m] [0m[0mJar uptodate: C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\monads_3-0.1.0.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0mPackaging C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\monads_3-0.1.0.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\IO$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\IO$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\IO$ioMonad$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\IO$ioMonad$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\IO.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\IO.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\IO.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\IO.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Monad$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Monad$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Monad.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Monad.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Monad.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Monad.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Monoid$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Monoid$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Monoid$vectorMonoid.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Monoid$vectorMonoid.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Monoid.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Monoid.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Monoid.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Monoid.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Reader$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Reader$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Reader$readerMonad.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Reader$readerMonad.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Reader.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Reader.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Reader.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Reader.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\State$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\State$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\State$stateMonad.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\State$stateMonad.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\State.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\State.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\State.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\State.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Writer$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Writer$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Writer$writerMonad.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Writer$writerMonad.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Writer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Writer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	monads\Writer.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\monads\Writer.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\App$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\App$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\App.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\App.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\App.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\App.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\MatchResult$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\MatchResult$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\MatchResult.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\MatchResult.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\MatchResult.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\MatchResult.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\MenuLeaf$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\MenuLeaf$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\MenuLeaf.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\MenuLeaf.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\MenuLeaf.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\MenuLeaf.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\MenuOption.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\MenuOption.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\MenuOption.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\MenuOption.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\MenuTreeNode$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\MenuTreeNode$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\MenuTreeNode.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\MenuTreeNode.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\MenuTreeNode.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\MenuTreeNode.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\Outcome$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\Outcome$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\Outcome$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\Outcome$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\Outcome.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\Outcome.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\Outcome.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\Outcome.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\ReaderOps$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\ReaderOps$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\ReaderOps$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\ReaderOps$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\ReaderOps.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\ReaderOps.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\ReaderOps.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\ReaderOps.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\StateOps$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\StateOps$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\StateOps$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\StateOps$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\StateOps.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\StateOps.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\StateOps.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\StateOps.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TeamRecord$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TeamRecord$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TeamRecord.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TeamRecord.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TeamRecord.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TeamRecord.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TieBreakRule$$anon$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TieBreakRule$$anon$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TieBreakRule$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TieBreakRule$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TieBreakRule.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TieBreakRule.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TieBreakRule.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TieBreakRule.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentConfig$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentConfig$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentConfig.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentConfig.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentConfig.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentConfig.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentLogic$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentLogic$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentLogic.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentLogic.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentLogic.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentLogic.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentReader.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentReader.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentReader.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentReader.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentState$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentState$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentState.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentState.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentState.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentState.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentStateOps.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentStateOps.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentStateOps.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentStateOps.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentWriter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentWriter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\TournamentWriter.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\TournamentWriter.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\UserInteraction.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\UserInteraction.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\UserInteraction.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\UserInteraction.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\WriterOps$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\WriterOps$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\WriterOps$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\WriterOps$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\WriterOps$package$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\WriterOps$package$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\WriterOps$package.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\WriterOps$package.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\WriterOps$package.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\WriterOps$package.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\WriterOps.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\WriterOps.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	tournament\WriterOps.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\chemi\OneDrive\Рабочий стол\monads-main\target\scala-3.6.4\classes\tournament\WriterOps.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

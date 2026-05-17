@@ -130,13 +130,13 @@ object App extends UserInteraction:
     MenuTreeNode(
       title = statusTitle(st),
       children = Seq(
-        MenuLeaf("Add team",              doAddTeam(st).flatMap(loop(cfg, _))),
-        MenuLeaf("Record match result",   doRecordMatch(cfg, st).flatMap(loop(cfg, _))),
-        MenuLeaf("Show table",            doShowTable(cfg, st).flatMap(loop(cfg, _))),
-        MenuLeaf("Show matches",          doShowMatches(st).flatMap(loop(cfg, _))),
-        MenuLeaf("Next round",            doNextRound(st).flatMap(loop(cfg, _))),
-        MenuLeaf("Reset tournament",      doReset(st).flatMap(loop(cfg, _))),
-        MenuLeaf("Exit",                  doExit(st), continue = false)
+        MenuLeaf("Add team", doAddTeam(st).flatMap(loop(cfg, _))),
+        MenuLeaf("Record match result", doRecordMatch(cfg, st).flatMap(loop(cfg, _))),
+        MenuLeaf("Show table", doShowTable(cfg, st).flatMap(loop(cfg, _))),
+        MenuLeaf("Show matches", doShowMatches(st).flatMap(loop(cfg, _))),
+        MenuLeaf("Next round", doNextRound(st).flatMap(loop(cfg, _))),
+        MenuLeaf("Reset tournament", doReset(st).flatMap(loop(cfg, _))),
+        MenuLeaf("Exit", doExit(st))
       )
     )
 
