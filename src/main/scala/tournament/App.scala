@@ -34,7 +34,7 @@ object App extends UserInteraction:
       val lines = matches.map(m => s"Round ${m.round}: ${m.teamA} ${m.goalsA} - ${m.goalsB} ${m.teamB}")
       print(lines.mkString("\n"))
 
-  // Логирование
+  // --- Логирование ---
 
   private def logMatch(m: MatchResult): IO[Unit] =
     val (log1, _) = writer.tell(s"Match recorded: ${m.teamA} ${m.goalsA} - ${m.goalsB} ${m.teamB} (round ${m.round})").log -> ()
@@ -50,7 +50,7 @@ object App extends UserInteraction:
       IO.delay(log1.foreach(println))
     else IO.pure(())
 
-  //  IO-сценарии
+  // --- IO-сценарии ---
 
   private def doAddTeam(current: TournamentState): IO[TournamentState] =
     for
@@ -70,38 +70,38 @@ object App extends UserInteraction:
         goalsA  <- promptInt(s"Goals for $teamA: ")
         goalsB  <- promptInt(s"Goals for $teamB: ")
         canPlay <- IO.pure(reader.canSchedule(teamA, teamB, current.currentRound, current.matches).run(cfg))
-        st      <- if !canPlay then
-          print(s"Cannot schedule $teamA vs $teamB.").map(_ => current)
-        else
-          val result = MatchResult(teamA, teamB, goalsA, goalsB, current.currentRound)
-          val (st1, opt) = state.recordMatch(result).run(current)
-          opt match
-            case Some(m) =>
-              val oldTable = state.getTable.run(current)._2
-              val newTable = state.getTable.run(st1)._2
-
-              val outcomeA = TournamentLogic.outcomeFor(teamA, m)
-              val outcomeB = TournamentLogic.outcomeFor(teamB, m)
-
-              val ptsA = reader.pointsFor(outcomeA).run(cfg)
-              val ptsB = reader.pointsFor(outcomeB).run(cfg)
-
-              val oldPosA = TournamentLogic.positionOf(teamA, oldTable)
-              val oldPosB = TournamentLogic.positionOf(teamB, oldTable)
-              val newPosA = TournamentLogic.positionOf(teamA, newTable)
-              val newPosB = TournamentLogic.positionOf(teamB, newTable)
-
-              for
-                _ <- logMatch(m)
-                _ <- logPoints(teamA, outcomeA, ptsA)
-                _ <- logPoints(teamB, outcomeB, ptsB)
-                _ <- logPosition(teamA, oldPosA, newPosA)
-                _ <- logPosition(teamB, oldPosB, newPosB)
-                _ <- print("Match recorded.")
-              yield st1
-            case None =>
-              print("Failed to record match.").map(_ => current)
+        st      <- if !canPlay then print(s"Cannot schedule $teamA vs $teamB.").map(_ => current)
+        else processMatch(cfg, current, teamA, teamB, goalsA, goalsB)
       yield st
+
+  private def processMatch(cfg: TournamentConfig, current: TournamentState,
+                           teamA: String, teamB: String, goalsA: Int, goalsB: Int): IO[TournamentState] =
+    val result = MatchResult(teamA, teamB, goalsA, goalsB, current.currentRound)
+    val (st1, opt) = state.recordMatch(result).run(current)
+    opt match
+      case Some(m) => logMatchResult(cfg, current, st1, m, teamA, teamB)
+      case None    => print("Failed to record match.").map(_ => current)
+
+  private def logMatchResult(cfg: TournamentConfig, oldSt: TournamentState, newSt: TournamentState,
+                             m: MatchResult, teamA: String, teamB: String): IO[TournamentState] =
+    val oldTable = state.getTable.run(oldSt)._2
+    val newTable = state.getTable.run(newSt)._2
+    val outcomeA = TournamentLogic.outcomeFor(teamA, m)
+    val outcomeB = TournamentLogic.outcomeFor(teamB, m)
+    val ptsA = reader.pointsFor(outcomeA).run(cfg)
+    val ptsB = reader.pointsFor(outcomeB).run(cfg)
+    val oldPosA = TournamentLogic.positionOf(teamA, oldTable)
+    val oldPosB = TournamentLogic.positionOf(teamB, oldTable)
+    val newPosA = TournamentLogic.positionOf(teamA, newTable)
+    val newPosB = TournamentLogic.positionOf(teamB, newTable)
+    for
+      _ <- logMatch(m)
+      _ <- logPoints(teamA, outcomeA, ptsA)
+      _ <- logPoints(teamB, outcomeB, ptsB)
+      _ <- logPosition(teamA, oldPosA, newPosA)
+      _ <- logPosition(teamB, oldPosB, newPosB)
+      _ <- print("Match recorded.")
+    yield newSt
 
   private def doShowTable(cfg: TournamentConfig, current: TournamentState): IO[TournamentState] =
     val sorted = reader.ranking(current.teams, current.matches).run(cfg)
@@ -121,7 +121,7 @@ object App extends UserInteraction:
   private def doExit(current: TournamentState): IO[Unit] =
     print(s"Final: ${current.teams.size} teams, ${current.matches.size} matches. Goodbye!")
 
-  //  Цикл
+  // --- Цикл ---
 
   private def statusTitle(st: TournamentState): String =
     s"Tournament Round ${st.currentRound} | Teams: ${st.teams.size} | Matches: ${st.matches.size}"
@@ -143,19 +143,17 @@ object App extends UserInteraction:
   private def loop(cfg: TournamentConfig, st: TournamentState): IO[Unit] =
     val menu = buildMenu(cfg, st)
     for
-      _      <- IO.putStrLn(s"\n=== ${statusTitle(st)} ===")
-      _      <- IO.delay(menu.children.zipWithIndex.foreach { (opt, i) => println(s"${i + 1}) ${opt.show}") })
+      _      <- printStatus(st)
+      _      <- printMenuItems(menu)
       answer <- IO.getStrLn
-      _      <- answer.trim match
-        case s =>
-          s.toIntOption match
-            case Some(n) if n >= 1 && n <= menu.children.size =>
-              menu.children(n - 1) match
-                case leaf: MenuLeaf =>
-                  if leaf.continue then leaf.action else leaf.action
-                case _ => IO.pure(())
-            case _ => IO.putStrLn("Unknown command.").flatMap(_ => loop(cfg, st))
+      _      <- menu.handleUserAnswer(answer).flatMap(_ => loop(cfg, st))
     yield ()
+
+  private def printStatus(st: TournamentState): IO[Unit] =
+    IO.putStrLn(s"\n=== ${statusTitle(st)} ===")
+
+  private def printMenuItems(menu: MenuTreeNode): IO[Unit] =
+    IO.delay(menu.children.zipWithIndex.foreach { (opt, i) => println(s"${i + 1}) ${opt.show}") })
 
   def handleUserAnswer(answer: String): IO[Unit] = IO.pure(())
 
