@@ -51,6 +51,3 @@ object TournamentLogic:
 
   def positionOf(team: String, table: List[TeamRecord]): Int =
     table.indexWhere(_.name == team) + 1
-
-  def sortWithTieBreak(records: List[TeamRecord], tieBreakFn: (TeamRecord, TeamRecord) => Int): List[TeamRecord] =
-    records.sortWith { (a, b) => tieBreakFn(a, b) < 0 }

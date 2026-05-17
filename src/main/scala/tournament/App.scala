@@ -146,7 +146,7 @@ object App extends UserInteraction:
       _      <- printStatus(st)
       _      <- printMenuItems(menu)
       answer <- IO.getStrLn
-      _      <- menu.handleUserAnswer(answer).flatMap(_ => loop(cfg, st))
+      _      <- menu.handleUserAnswer(answer)
     yield ()
 
   private def printStatus(st: TournamentState): IO[Unit] =

@@ -34,17 +34,10 @@ final case class MenuTreeNode(
         s.toIntOption match
           case Some(n) if n >= 1 && n <= children.size =>
             children(n - 1) match
-              case leaf: MenuLeaf =>
-                if leaf.continue then leaf.action.flatMap(_ => userInteractionLoop)
-                else leaf.action
-              case node: MenuTreeNode =>
-                node.userInteractionLoop.flatMap(_ => userInteractionLoop)
-              case other =>
-                IO.putStrLn(s"Unhandled menu option: ${other.show}")
-                  .flatMap(_ => userInteractionLoop)
-          case _ =>
-            IO.putStrLn(s"Unknown command: '$s'.")
-              .flatMap(_ => userInteractionLoop)
+              case leaf: MenuLeaf  => leaf.action
+              case node: MenuTreeNode => node.userInteractionLoop.flatMap(_ => userInteractionLoop)
+              case other => IO.putStrLn(s"Unhandled: ${other.show}").flatMap(_ => userInteractionLoop)
+          case _ => IO.putStrLn(s"Unknown command: '$s'.").flatMap(_ => userInteractionLoop)
 
   def userInteractionLoop: IO[Unit] =
     for
