@@ -1,0 +1,93 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(early(addPluginSbtFile="""C:\Users\chemi\AppData\Local\Temp\idea.sbt"""), None, None)
+[debug] > Exec(addPluginSbtFile="""C:\Users\chemi\AppData\Local\Temp\idea.sbt""", None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.10.6 (Oracle Corporation Java 24)
+[debug] Load.defaultLoad until apply took 685.1715ms
+[debug]           Load.loadUnit: plugins took 168.1512ms
+[debug]           Load.loadUnit: defsScala took 0.4594ms
+[debug] [Loading] Scanning directory C:\Users\chemi\OneDrive\Рабочий стол\monads-main\project
+[debug]             Load.loadUnit: mkEval took 78.6517ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\chemi\OneDrive\Рабочий стол\monads-main\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 30.0621 ms
+[info] loading settings for project monads-main-build from idea.sbt...
+[debug]               Load.resolveProject(monads-main-build) took 96.4467ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id monads-main-build, base: C:\Users\chemi\OneDrive\Рабочий стол\monads-main\project, plugins: List(<none>))) took 155.2733ms
+[debug] [Loading] Done in C:\Users\chemi\OneDrive\Рабочий стол\monads-main\project, returning: (monads-main-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 6145.8736ms
+[debug]           Load.loadUnit: cleanEvalClasses took 41.6524ms
+[debug]         Load.loadUnit(file:/C:/Users/chemi/OneDrive/Рабочий%20стол/monads-main/project/, ...) took 6367.5997ms
+[debug]       Load.apply: load took 6942.5636ms
+[debug]       Load.apply: resolveProjects took 13.3362ms
+[debug]       Load.apply: finalTransforms took 192.7338ms
+[debug]       Load.apply: config.delegates took 11.8617ms
+[debug]       Load.apply: Def.make(settings)... took 733.0184ms
+[debug]       Load.apply: structureIndex took 173.8902ms
+[debug]       Load.apply: mkStreams took 1.9535ms
+[info] loading project definition from C:\Users\chemi\OneDrive\Рабочий стол\monads-main\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 13690.6011ms
+[debug]     Load.loadUnit: defsScala took 0.0097ms
+[debug] [Loading] Scanning directory C:\Users\chemi\OneDrive\Рабочий стол\monads-main
+[debug]       Load.loadUnit: mkEval took 0.8374ms
+[debug] [Loading] Found root project root w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.SemanticdbPlugin,sbt.plugins.JUnitXmlReportPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 2.7487 ms
+[info] loading settings for project root from build.sbt...
+[debug]         Load.resolveProject(root) took 42.8761ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root, base: C:\Users\chemi\OneDrive\Рабочий стол\monads-main, plugins: List(<none>))) took 47.2973ms
+[debug] [Loading] Done in C:\Users\chemi\OneDrive\Рабочий стол\monads-main, returning: (root)
+[debug]     Load.loadUnit: loadedProjectsRaw took 1399.9615ms
+[debug]     Load.loadUnit: cleanEvalClasses took 7.7401ms
+[debug]   Load.loadUnit(file:/C:/Users/chemi/OneDrive/Рабочий%20стол/monads-main/, ...) took 15101.167ms
+[debug] Load.apply: load took 15220.2704ms
+[debug] Load.apply: resolveProjects took 0.2421ms
+[debug] Load.apply: finalTransforms took 58.0289ms
+[debug] Load.apply: config.delegates took 0.5448ms
+[debug] Load.apply: Def.make(settings)... took 104.7668ms
+[debug] Load.apply: structureIndex took 40.1013ms
+[debug] Load.apply: mkStreams took 0.0034ms
+[info] set current project to monads (in build file:/C:/Users/chemi/OneDrive/Рабочий%20стол/monads-main/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(idea-shell, None, None)

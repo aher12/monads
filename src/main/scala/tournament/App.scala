@@ -34,7 +34,7 @@ object App extends UserInteraction:
       val lines = matches.map(m => s"Round ${m.round}: ${m.teamA} ${m.goalsA} - ${m.goalsB} ${m.teamB}")
       print(lines.mkString("\n"))
 
-  // --- Логирование ---
+  // Логирование
 
   private def logMatch(m: MatchResult): IO[Unit] =
     val (log1, _) = writer.tell(s"Match recorded: ${m.teamA} ${m.goalsA} - ${m.goalsB} ${m.teamB} (round ${m.round})").log -> ()
@@ -50,7 +50,7 @@ object App extends UserInteraction:
       IO.delay(log1.foreach(println))
     else IO.pure(())
 
-  // --- IO-сценарии ---
+  //  IO-сценарии
 
   private def doAddTeam(current: TournamentState): IO[TournamentState] =
     for
@@ -121,7 +121,7 @@ object App extends UserInteraction:
   private def doExit(current: TournamentState): IO[Unit] =
     print(s"Final: ${current.teams.size} teams, ${current.matches.size} matches. Goodbye!")
 
-  // --- Цикл ---
+  //  Цикл
 
   private def statusTitle(st: TournamentState): String =
     s"Tournament Round ${st.currentRound} | Teams: ${st.teams.size} | Matches: ${st.matches.size}"
