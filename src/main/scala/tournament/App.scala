@@ -34,7 +34,7 @@ object App extends UserInteraction:
       val lines = matches.map(m => s"Round ${m.round}: ${m.teamA} ${m.goalsA} - ${m.goalsB} ${m.teamB}")
       print(lines.mkString("\n"))
 
-
+  // --- Логирование ---
 
   private def logMatch(m: MatchResult): IO[Unit] =
     val (log1, _) = writer.tell(s"Match recorded: ${m.teamA} ${m.goalsA} - ${m.goalsB} ${m.teamB} (round ${m.round})").log -> ()
@@ -50,6 +50,7 @@ object App extends UserInteraction:
       IO.delay(log1.foreach(println))
     else IO.pure(())
 
+  // --- IO-сценарии ---
 
   private def doAddTeam(current: TournamentState): IO[TournamentState] =
     for
@@ -79,20 +80,16 @@ object App extends UserInteraction:
               val oldTable = state.getTable.run(current)._2
               val newTable = state.getTable.run(st1)._2
 
-              val outcomeA = if m.goalsA > m.goalsB then Outcome.Win
-              else if m.goalsA == m.goalsB then Outcome.Draw
-              else Outcome.Loss
-              val outcomeB = if m.goalsB > m.goalsA then Outcome.Win
-              else if m.goalsB == m.goalsA then Outcome.Draw
-              else Outcome.Loss
+              val outcomeA = TournamentLogic.outcomeFor(teamA, m)
+              val outcomeB = TournamentLogic.outcomeFor(teamB, m)
 
               val ptsA = reader.pointsFor(outcomeA).run(cfg)
               val ptsB = reader.pointsFor(outcomeB).run(cfg)
 
-              val oldPosA = oldTable.indexWhere(_.name == teamA) + 1
-              val oldPosB = oldTable.indexWhere(_.name == teamB) + 1
-              val newPosA = newTable.indexWhere(_.name == teamA) + 1
-              val newPosB = newTable.indexWhere(_.name == teamB) + 1
+              val oldPosA = TournamentLogic.positionOf(teamA, oldTable)
+              val oldPosB = TournamentLogic.positionOf(teamB, oldTable)
+              val newPosA = TournamentLogic.positionOf(teamA, newTable)
+              val newPosB = TournamentLogic.positionOf(teamB, newTable)
 
               for
                 _ <- logMatch(m)
@@ -124,6 +121,7 @@ object App extends UserInteraction:
   private def doExit(current: TournamentState): IO[Unit] =
     print(s"Final: ${current.teams.size} teams, ${current.matches.size} matches. Goodbye!")
 
+  // --- Цикл ---
 
   private def statusTitle(st: TournamentState): String =
     s"Tournament Round ${st.currentRound} | Teams: ${st.teams.size} | Matches: ${st.matches.size}"
